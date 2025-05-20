@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat | PawBuddy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>PawBuddy Chat</h1>
+    <p>Ask us anything about the campaign!</p>
+  </header>
+  <div class="container">
+    <div class="chatbox" id="chat">
+      <p><strong>PawBuddy:</strong> Hi there! How can I help you today?</p>
+    </div>
+    <form onsubmit="sendMessage(event)">
+      <input type="text" id="userInput" placeholder="Type your message..." required>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </div>
+
+  <script>
+    function sendMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById('userInput');
+      const message = input.value;
+      const chat = document.getElementById('chat');
+      chat.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+      input.value = '';
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+</body>
+</html>
