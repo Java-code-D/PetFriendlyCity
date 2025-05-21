@@ -122,6 +122,118 @@
     <a href="volunteer.html" class="btn">VOLUNTEERING FORM</a>
   </section>
 
+
+
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f8f8; margin: 0; padding: 0; }
+    .carousel-container { max-width: 400px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px #ccc; padding: 24px; }
+    .pet-profile { text-align: center; }
+    .pet-img { width: 180px; height: 180px; object-fit: cover; border-radius: 50%; margin-bottom: 16px; }
+    .pet-name { font-size: 1.4em; font-weight: bold; margin: 8px 0 4px; }
+    .pet-info { color: #666; margin-bottom: 10px; }
+    .carousel-controls { display: flex; justify-content: space-between; margin-top: 18px; }
+    .carousel-controls button, .ai-suggest-btn { background: #ff004f; color: #fff; border: none; border-radius: 6px; padding: 10px 16px; font-size: 1em; cursor: pointer; transition: background 0.2s; }
+    .carousel-controls button:hover, .ai-suggest-btn:hover { background: #ff004f; }
+    .ai-suggest-btn { width: 100%; margin-top: 18px; }
+    @media (max-width: 500px) {
+      .carousel-container { padding: 10px; }
+      .pet-img { width: 120px; height: 120px; }
+    }
+  </style>
+
+
+  <div class="carousel-container">
+    <div class="pet-profile" id="petProfile">
+      <!-- Pet info will be injected here -->
+    </div>
+    <div class="carousel-controls">
+      <button id="prevBtn">&#8592; Previous</button>
+      <button id="nextBtn">Next &#8594;</button>
+    </div>
+    <button class="ai-suggest-btn" id="aiSuggestBtn">AI Suggest a Pet</button>
+  </div>
+
+  <script>
+    // Example pet profiles (replace/add with real data or connect to backend)
+    const pets = [
+      {
+        name: "Bella",
+        species: "Dog",
+        breed: "Labrador Retriever",
+        age: "2 years",
+        image: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&w=400&h=400&fit=crop",
+        description: "Friendly, playful, and loves walks in the park."
+      },
+      {
+        name: "Milo",
+        species: "Cat",
+        breed: "Siamese",
+        age: "1 year",
+        image: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&w=400&h=400&fit=crop",
+        description: "Curious and affectionate, perfect for a calm home."
+      },
+      {
+        name: "Charlie",
+        species: "Dog",
+        breed: "Beagle",
+        age: "3 years",
+        image: "https://images.pexels.com/photos/460775/pexels-photo-460775.jpeg?auto=compress&w=400&h=400&fit=crop",
+        description: "Energetic and loyal, loves to play fetch."
+      },
+      {
+        name: "Luna",
+        species: "Cat",
+        breed: "Maine Coon",
+        age: "4 years",
+        image: "https://westparkanimalhospital.com/wp-content/uploads/2019/05/WestPark_iStock-600994082-1024x706-1.jpg",
+        description: "Gentle giant, great with kids and other pets."
+      }
+    ];
+
+    let currentIndex = 0;
+
+    function showPet(index) {
+      const pet = pets[index];
+      document.getElementById('petProfile').innerHTML = `
+        <img src="${pet.image}" alt="${pet.name}" class="pet-img">
+        <div class="pet-name">${pet.name}</div>
+        <div class="pet-info">${pet.species} • ${pet.breed} • ${pet.age}</div>
+        <div class="pet-info">${pet.description}</div>
+      `;
+    }
+
+    document.getElementById('prevBtn').onclick = function() {
+      currentIndex = (currentIndex - 1 + pets.length) % pets.length;
+      showPet(currentIndex);
+    };
+
+    document.getElementById('nextBtn').onclick = function() {
+      currentIndex = (currentIndex + 1) % pets.length;
+      showPet(currentIndex);
+    };
+
+    document.getElementById('aiSuggestBtn').onclick = function() {
+      // Simulated AI suggestion: random pet (replace with real AI logic as needed)
+      const aiIndex = Math.floor(Math.random() * pets.length);
+      currentIndex = aiIndex;
+      showPet(currentIndex);
+      alert(`AI thinks "${pets[aiIndex].name}" is a great match for you!`);
+    };
+
+    // Initial display
+    showPet(currentIndex);
+  </script>
+
+
+
+
+
+
   <!-- CONTACT FOOTER -->
   <footer class="contact">
     <div class="contact-box">
